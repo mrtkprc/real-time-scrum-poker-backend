@@ -1,6 +1,7 @@
+const http = require('http');
 require('dotenv').config();
 const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, PubSub } = require('apollo-server-express');
 const { importSchema } =  require('graphql-import');
 
 //db
@@ -12,6 +13,7 @@ db();
 const Participant = require('./models/Participant');
 const Session = require('./models/Session');
 const Manager = require('./models/Manager');
+const pubSub = new PubSub();
 
 // resolvers
 const resolvers = require('./graphql/resolvers/index');
@@ -23,13 +25,17 @@ const server = new ApolloServer({
 	context: ({req}) => ({
 		Participant,
         Session,
-        Manager
+		Manager,
+		pubSub
 	})
 });
 
 const app = express();
 server.applyMiddleware({ app });
 
-app.listen({ port: 4000 }, () =>
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
+
+httpServer.listen({ port: 4000 }, () =>
 	console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
 );
