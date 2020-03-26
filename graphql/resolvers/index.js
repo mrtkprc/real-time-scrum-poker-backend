@@ -7,25 +7,15 @@ const Manager = require('./query/Manager');
 // mutation resolvers
 const Mutation = require('./mutation/index');
 
+// Subscription resolvers
+
+const Subscription = require('./subscriptions/index');
+
 module.exports = {
 	Query,
 	Mutation,
 	Participant,
 	Session,
 	Manager,
-	Subscription:{
-		sayi: {
-			subscribe: (parent, args, {pubSub}) => {
-				let sayi = 5;
-				
-				setInterval(() => {
-					sayi += 1;
-					pubSub.publish('sayi', {sayi} );
-
-				},3000);
-
-				return pubSub.asyncIterator('sayi')
-			}
-		}
-	}
+	Subscription
 };
