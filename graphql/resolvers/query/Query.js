@@ -11,9 +11,6 @@ const Query = {
 	manager: (parent, args, {Manager}) => {
 		return Manager.findById(args.id);
 	},
-
-
-
 };
 
 module.exports = Query;

@@ -18,3 +18,7 @@ input CreateSessionInput{
     sessionNumber: Int!
     description: String
 }
+
+type Subscription{
+    newParticipantArrived: Participant!
+}

@@ -4,6 +4,7 @@
 
 # import Query from "./types/session.graphql"
 # import Mutation from "./types/session.graphql"
+# import Subscription from "./types/session.graphql"
 
 # import Query from "./types/manager.graphql"
 # import Mutation from "./types/manager.graphql"
