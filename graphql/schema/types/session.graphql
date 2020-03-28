@@ -20,5 +20,5 @@ input CreateSessionInput{
 }
 
 type Subscription{
-    newParticipantArrived: Participant!
+    newParticipantArrived(sessionId: ID): Participant!
 }
