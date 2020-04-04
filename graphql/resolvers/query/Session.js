@@ -1,7 +1,6 @@
 const Session = {
     participants: (parent, args, { Participant }) => {
-        console.log(parent);
-        return Participant.find({sessionId: parent._id});
+        return Participant.find({sessionId: parent._id}).sort({_id: -1});
     }
 };
 

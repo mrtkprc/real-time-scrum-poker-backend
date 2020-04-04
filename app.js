@@ -2,6 +2,8 @@ const http = require('http');
 require('dotenv').config();
 const express = require('express');
 const { ApolloServer, PubSub } = require('apollo-server-express');
+//TODO:MK - Use RedisPubSub
+//const { RedisPubSub } = require('graphql-redis-subscriptions');
 const { importSchema } =  require('graphql-import');
 
 //db

@@ -7,6 +7,10 @@ const participantSchema = new Schema({
     sessionId: {
         type: Schema.Types.ObjectId,
         ref: 'Session'
+    },
+    isManager:{
+        type: Schema.Types.Number,
+        default: 0
     }
 });
 

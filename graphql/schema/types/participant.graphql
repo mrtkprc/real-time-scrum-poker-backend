@@ -6,6 +6,7 @@ type Participant {
     id: ID!
     nickname: String!
     session: Session!
+    isManager: Int
 }
 
 type Mutation{
@@ -15,8 +16,4 @@ type Mutation{
 input CreateParticipantInput {
     nickname: String!,
     sessionNumber: Int!
-}
-
-type Subscription{
-    sayi: Int
 }
