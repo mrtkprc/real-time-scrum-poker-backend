@@ -21,4 +21,5 @@ input CreateSessionInput{
 
 type Subscription{
     newParticipantArrived(sessionId: ID): Participant!
+    voteGiven(sessionId: ID): Vote!
 }

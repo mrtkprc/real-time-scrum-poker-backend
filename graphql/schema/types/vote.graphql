@@ -15,4 +15,5 @@ type Mutation{
 input AddVoteInput {
     vote: String!
     participantId: ID!
+    sessionId: ID!
 }
