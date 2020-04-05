@@ -1,0 +1,18 @@
+type Query{
+    vote(id: ID!): Vote
+}
+
+type Vote{
+    id: ID!
+    vote: String
+    participant: Participant
+}
+
+type Mutation{
+    addVote(data: AddVoteInput): Vote!
+}
+
+input AddVoteInput {
+    vote: String!
+    participantId: ID!
+}

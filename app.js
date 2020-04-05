@@ -15,6 +15,7 @@ db();
 const Participant = require('./models/Participant');
 const Session = require('./models/Session');
 const Manager = require('./models/Manager');
+const Vote = require('./models/Vote');
 const pubSub = new PubSub();
 
 // resolvers
@@ -28,6 +29,7 @@ const server = new ApolloServer({
 		Participant,
         Session,
 		Manager,
+		Vote,
 		pubSub
 	})
 });

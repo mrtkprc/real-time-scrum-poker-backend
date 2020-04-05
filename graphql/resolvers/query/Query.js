@@ -15,6 +15,9 @@ const Query = {
 
 		return session;
 	},
+	vote: (parent, args, {Vote}) => {
+		return Vote.findById(args.id);
+	}
 };
 
 module.exports = Query;

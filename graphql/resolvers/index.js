@@ -2,6 +2,7 @@
 const Query = require('./query/Query');
 const Participant = require('./query/Participant');
 const Session = require('./query/Session');
+const Vote = require('./query/Vote');
 
 // mutation resolvers
 const Mutation = require('./mutation/index');
@@ -15,5 +16,6 @@ module.exports = {
 	Mutation,
 	Participant,
 	Session,
+	Vote,
 	Subscription
 };
