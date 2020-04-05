@@ -7,6 +7,7 @@ type Participant {
     nickname: String!
     session: Session!
     isManager: Int
+    vote: Vote
 }
 
 type Mutation{

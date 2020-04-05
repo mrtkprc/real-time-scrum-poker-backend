@@ -8,6 +8,7 @@ type Session{
     sessionNumber: Int!
     description: String
     participants: [Participant]
+    votes: [Vote]
 }
 
 type Mutation{

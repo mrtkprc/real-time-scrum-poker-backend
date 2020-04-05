@@ -3,9 +3,11 @@ type Query{
 }
 
 type Vote{
-    id: ID!
+    id: ID
     vote: String
+    isGiven: Int
     participant: Participant
+    session: Session
 }
 
 type Mutation{
