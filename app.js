@@ -25,14 +25,14 @@ const resolvers = require('./graphql/resolvers/index');
 const server = new ApolloServer({
 	typeDefs: importSchema('./graphql/schema/schema.graphql'),
 	resolvers,
-
 	context: ({req}) => ({
 		Participant,
         Session,
 		Manager,
 		Vote,
 		pubSub
-	})
+	}),
+	introspection: true
 });
 
 const app = express();
@@ -41,6 +41,6 @@ server.applyMiddleware({ app });
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
-httpServer.listen({ port: 4000 }, () =>
+httpServer.listen(process.env.PORT || 4000, () =>
 	console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
 );
