@@ -25,24 +25,7 @@ const resolvers = require('./graphql/resolvers/index');
 const server = new ApolloServer({
 	typeDefs: importSchema('./graphql/schema/schema.graphql'),
 	resolvers,
-	subscriptions:{
-		onConnect: (connectionParams, webSocket, context) => {
-			console.log("One websocket connection established: \n");
 
-			setTimeout(() => {
-				console.log(`Subscriptions: ${pubSub.subscriptions}`);
-				console.log(`Current SubIdCounter: ${pubSub.subIdCounter}`);
-			},2000);
-		},
-		onDisconnect:(webSocket, context) => {
-			console.log("One websocket connection disconected: \n");
-
-			setTimeout(() => {
-				console.log(`Subscriptions: ${pubSub.subscriptions}`);
-				console.log(`Current SubIdCounter: ${pubSub.subIdCounter}`);
-			},2000);
-		}
-	},
 	context: ({req}) => ({
 		Participant,
         Session,
