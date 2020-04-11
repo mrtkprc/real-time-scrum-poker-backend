@@ -12,10 +12,16 @@ type Participant {
 
 type Mutation{
     createParticipant(data: CreateParticipantInput!): Participant!
+    createScrumMasterWithSession(data: CreateScrumMasterWithSessionInput!): Participant!
 }
 
 input CreateParticipantInput {
     nickname: String!,
     sessionNumber: Int!
     isManager: Int
+}
+
+input CreateScrumMasterWithSessionInput{
+    sessionNumber: Int!
+    description: String
 }

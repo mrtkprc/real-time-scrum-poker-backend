@@ -19,5 +19,24 @@ module.exports = {
 		}catch (e) {
 			throw new Error(e);
 		}
-	}
+	},
+	createScrumMasterWithSession: async (parent, {data: {sessionNumber, description}},{Participant, Session}) => {
+        try{
+            const session = await Session({
+                sessionNumber,
+                description
+            }).save();
+
+            const participant = await new Participant({
+				nickname: "ScrumMaster",
+				sessionId: session._id,
+				isManager: 1
+            }).save();
+            
+            return participant;
+
+        }catch(e){
+            throw new Error(e);
+        }
+    }
 };
