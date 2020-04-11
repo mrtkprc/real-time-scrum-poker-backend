@@ -17,4 +17,5 @@ type Mutation{
 input CreateParticipantInput {
     nickname: String!,
     sessionNumber: Int!
+    isManager: Int
 }

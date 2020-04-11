@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "start-dev": "nodemon --ext js,graphql app.js",
+    "start-dev": "nodemon --ext js,graphql app.js --delay 1500ms",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

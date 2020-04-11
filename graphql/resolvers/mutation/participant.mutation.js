@@ -1,12 +1,13 @@
 module.exports = {
-	createParticipant: async (parent, {data: {nickname, sessionNumber}}, {Session, Participant, pubSub}) => {
+	createParticipant: async (parent, {data: {nickname, sessionNumber, isManager}}, {Session, Participant, pubSub}) => {
 		try {
 
 			/*TODO:MK - Aggregate following two queries in the future.*/
 			const session = await Session.findOne({"sessionNumber": sessionNumber});
 			const participant = await new Participant({
 				nickname,
-				sessionId: session._id
+				sessionId: session._id,
+				isManager
 			}).save();
 
 			await pubSub.publish('newParticipantArrived',
