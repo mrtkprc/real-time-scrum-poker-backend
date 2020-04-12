@@ -4,15 +4,21 @@ module.exports = {
 
 			/*TODO:MK - Aggregate following two queries in the future.*/
 			const session = await Session.findOne({"sessionNumber": sessionNumber});
+			
+			if(session === null || session == "undefined")
+			{
+				throw new Error("Session is not found.");
+			}
+
 			const participant = await new Participant({
 				nickname,
 				sessionId: session._id,
 				isManager
 			}).save();
 
-			await pubSub.publish('newParticipantArrived',
-				{newParticipantArrived:participant}
-			);
+			await pubSub.publish('newParticipantArrived',{
+					newParticipantArrived:participant
+			});
 
 			return participant;
 
