@@ -12,6 +12,11 @@ type Vote{
 
 type Mutation{
     addVote(data: AddVoteInput): Vote!
+    deleteAllVotesOnSession(sessionId: ID!): String
+}
+
+type Subscription{
+    allVotesDeleted(sessionId: ID!): String
 }
 
 input AddVoteInput {
@@ -19,3 +24,5 @@ input AddVoteInput {
     participantId: ID!
     sessionId: ID!
 }
+
+

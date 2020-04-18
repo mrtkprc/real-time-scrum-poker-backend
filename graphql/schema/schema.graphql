@@ -7,3 +7,4 @@
 
 # import Query from "./types/vote.graphql"
 # import Mutation from "./types/vote.graphql"
+# import Subscription from "./types/vote.graphql"

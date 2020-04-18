@@ -8,7 +8,6 @@ const Vote = require('./query/Vote');
 const Mutation = require('./mutation/index');
 
 // Subscription resolvers
-
 const Subscription = require('./subscriptions/index');
 
 module.exports = {

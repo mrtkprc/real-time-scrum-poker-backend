@@ -1,7 +1,9 @@
 const session = require('./session.subscription');
+const vote = require('./vote.subscription');
 
 const Subscription = {
-	...session
+	...session,
+	...vote
 };
 
 module.exports = Subscription;

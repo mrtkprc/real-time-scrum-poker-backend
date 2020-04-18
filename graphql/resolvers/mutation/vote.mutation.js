@@ -7,5 +7,15 @@ module.exports = {
         });
 
         return voteGiven;
+    },
+    deleteAllVotesOnSession: async (parent, {sessionId}, {Vote, pubSub}) => {
+        const deleteVotes = await Vote.deleteMany({sessionId});
+
+        await pubSub.publish('allVotesDeleted', {
+            sessionId,
+            allVotesDeleted: String(deleteVotes.deletedCount)
+        })
+
+        return String(deleteVotes.deletedCount);
     }
 };
