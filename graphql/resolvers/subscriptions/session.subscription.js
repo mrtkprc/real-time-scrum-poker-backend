@@ -3,10 +3,10 @@ const {withFilter} = require('apollo-server');
 module.exports = {
     newParticipantArrived: {
         subscribe: withFilter((parent, args, {pubSub}) => {
-            return pubSub.asyncIterator('newParticipantArrived');
-        },
+                return pubSub.asyncIterator('newParticipantArrived');
+            },
             (payload, variables) => {
-            return variables.sessionId ? String(payload.newParticipantArrived.sessionId) === variables.sessionId.toString() : false;
+                return variables.sessionId ? String(payload.newParticipantArrived.sessionId) === variables.sessionId.toString() : false;
             }
         )
     },
@@ -16,6 +16,15 @@ module.exports = {
             },
             (payload, variables) => {
                 return variables.sessionId ? String(payload.voteGiven.sessionId) === variables.sessionId.toString() : false;
+            }
+        )
+    },
+    forwardTeamToResults: {
+        subscribe: withFilter((parent, args, {pubSub}) => {
+                return pubSub.asyncIterator('forwardTeamToResults');
+            },
+            (payload, variables) => {
+                return variables.sessionId ? String(payload.sessionId) === variables.sessionId.toString() : false;
             }
         )
     }
