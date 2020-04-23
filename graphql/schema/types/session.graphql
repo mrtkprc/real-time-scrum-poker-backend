@@ -13,7 +13,7 @@ type Session{
 
 type Mutation{
     createSession(data: CreateSessionInput): Session!
-    forwardTeamToResultScreen(sessionId: ID!, delayDuration: Int!): String
+    forwardTeamToDefiniteScreen(sessionId: ID!, screenName: String!, delayDuration: Int!): String
 }
 
 input CreateSessionInput{
@@ -24,5 +24,5 @@ input CreateSessionInput{
 type Subscription{
     newParticipantArrived(sessionId: ID): Participant!
     voteGiven(sessionId: ID): Vote!
-    forwardTeamToResults(sessionId: ID!): String
+    forwardTeamToDefiniteScreenSubscription(sessionId: ID!): String
 }

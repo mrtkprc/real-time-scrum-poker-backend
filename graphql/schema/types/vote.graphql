@@ -1,5 +1,6 @@
 type Query{
     vote(id: ID!): Vote
+    voteResults(sessionId: ID!): [Vote]
 }
 
 type Vote{
@@ -8,6 +9,7 @@ type Vote{
     isGiven: Int
     participant: Participant
     session: Session
+    total: Int
 }
 
 type Mutation{

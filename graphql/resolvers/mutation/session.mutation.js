@@ -9,13 +9,14 @@ module.exports = {
             throw new Error(e);
         }
     },
-    forwardTeamToResultScreen: async (parent, {sessionId, delayDuration}, {pubSub}) => {
-        await pubSub.publish('forwardTeamToResults', {
+    forwardTeamToDefiniteScreen: async (parent, {sessionId, screenName, delayDuration}, {pubSub}) => {
+        await pubSub.publish('forwardTeamToDefiniteScreenSubscription', {
             sessionId,
             delayDuration,
-            forwardTeamToResults: String(delayDuration)
+            screenName,
+            forwardTeamToDefiniteScreenSubscription: JSON.stringify({delayDuration,screenName})
         })
 
-        return String(delayDuration);
+        return JSON.stringify({delayDuration,screenName});
     }
 };

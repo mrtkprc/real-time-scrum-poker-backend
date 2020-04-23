@@ -19,9 +19,9 @@ module.exports = {
             }
         )
     },
-    forwardTeamToResults: {
+    forwardTeamToDefiniteScreenSubscription: {
         subscribe: withFilter((parent, args, {pubSub}) => {
-                return pubSub.asyncIterator('forwardTeamToResults');
+                return pubSub.asyncIterator('forwardTeamToDefiniteScreenSubscription');
             },
             (payload, variables) => {
                 return variables.sessionId ? String(payload.sessionId) === variables.sessionId.toString() : false;

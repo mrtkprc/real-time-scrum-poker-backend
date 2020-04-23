@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 const Query = {
 	participant: (parent, args, { Participant }) => {
 		return Participant.findById(args.id);
@@ -17,6 +19,32 @@ const Query = {
 	},
 	vote: (parent, args, {Vote}) => {
 		return Vote.findById(args.id);
+	},
+	voteResults: async (parent,{sessionId},{Vote}) => {
+		console.log(sessionId);
+		const VoteResults = await Vote.aggregate([
+			{
+				$match:{
+					sessionId:ObjectId(sessionId),
+					isGiven: 1,
+				}
+			},
+			{
+				$group:{
+					_id: "$vote",
+					total: {$sum: 1}
+				}
+			},
+			{
+				$project:{
+					_id: 0,
+					vote: "$_id",
+					total: 1,
+				}
+			}
+		]);
+		console.log("VoteResults:", VoteResults);
+		return VoteResults;
 	}
 };
 
