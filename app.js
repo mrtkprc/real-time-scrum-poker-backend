@@ -1,9 +1,9 @@
 const http = require('http');
 require('dotenv').config();
 const express = require('express');
-const { ApolloServer, PubSub } = require('apollo-server-express');
-//TODO:MK - Use RedisPubSub
-//const { RedisPubSub } = require('graphql-redis-subscriptions');
+const { ApolloServer} = require('apollo-server-express');
+const {pubSub} = require('./pubsub');
+
 const { importSchema } =  require('graphql-import');
 
 //db
@@ -16,7 +16,7 @@ const Participant = require('./models/Participant');
 const Session = require('./models/Session');
 const Manager = require('./models/Manager');
 const Vote = require('./models/Vote');
-const pubSub = new PubSub();
+
 
 // resolvers
 const resolvers = require('./graphql/resolvers/index');
